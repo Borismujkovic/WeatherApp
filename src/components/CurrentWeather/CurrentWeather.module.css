@@ -1,0 +1,37 @@
+@value white-color: #FFFFFF;
+@value component-bg: #202b3b;
+
+.currentWeather{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.weatherInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.currentCity h2{
+    color: white-color;
+    font-size: 2.5rem;
+}
+
+.temperature{
+    font-size: 2.5rem;
+    color: white-color;
+    font-weight: 700;
+}
+
+.favoritesBtn{
+    display: flex;
+    align-items: center;
+    background-color: component-bg;
+    color: white-color;
+}
+
+.favoritesBtn:hover{
+    background-color: component-bg !important;
+    color: white-color !important;
+}

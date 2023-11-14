@@ -1,0 +1,26 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App-header {
+  background-color: #0b131e;
+  min-height: 100vh;
+  color: white;
+}
+
+.homeLayout{
+  padding: 1rem;
+  color: #9298a1;
+}
+
+.landing{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h3{
+  margin-bottom: 1rem;
+}

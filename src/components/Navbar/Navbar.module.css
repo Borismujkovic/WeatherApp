@@ -1,0 +1,43 @@
+@value component-bg: #202b3b;
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: start;
+    background-color: component-bg;
+    border-radius: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+.navbar img{
+    height: 70px;
+}
+
+h1{
+    text-align: center;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+ul a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+li{
+    width: 100%;
+    font-size: 1.4rem;
+}

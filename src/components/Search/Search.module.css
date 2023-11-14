@@ -1,0 +1,13 @@
+@value white-color: #FFFFFF;
+@value component-bg: #202b3b;
+
+.search input{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: component-bg;
+    border: none;
+    color: white-color;
+    letter-spacing: 1px;
+    font-weight: 700;
+}

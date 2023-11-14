@@ -1,0 +1,59 @@
+@value component-bg: #202b3b;
+@value white-color: #FFFFFF;
+@value input-color: #202b3b;
+
+.signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.signupContent{
+    background-color: component-bg;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 35%;
+    height: 50%;
+    box-shadow: 0 0.5rem 2rem 0 #202b3b;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+.input input{
+    background-color: #0b131e;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    color: white-color;
+}
+
+.submit{
+    font-size: 14px;
+    height: 32px;
+    padding: 4px 15px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid white-color;
+    color: white;
+    cursor: pointer;
+    margin: 1rem auto;
+}
+
+.submit:hover{
+    background-color: #0b131e;
+}
+
+.account{
+    text-align: center;
+}
+
+.account a{
+    color: white-color;
+    font-weight: 700;
+    cursor: pointer;
+}

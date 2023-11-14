@@ -1,0 +1,30 @@
+@value white-color: #FFFFFF;
+@value component-bg: #202b3b;
+
+.hourlyWeather{
+    background-color: component-bg;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.hourly{
+    display: flex;
+    padding: 1rem;
+    border-left: 1px solid white-color;
+    border-right: 1px solid white-color;
+    
+}
+
+.singleHours{
+    display: flex;
+}
+
+.hourly img{
+    height: 70px;
+    width: 70px;
+}
+
+.hourly p{
+    font-size: 1.7rem;
+    color: white-color;
+}

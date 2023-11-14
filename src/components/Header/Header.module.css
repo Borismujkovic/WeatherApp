@@ -1,0 +1,20 @@
+@value white-color: #FFFFFF;
+@value component-bg: #202b3b;
+@value btn-hover: #0b131e;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: component-bg;
+  padding: 1rem 1.5rem;
+  align-items: center;
+}
+
+.btn {
+  color: white-color;
+}
+
+.btn:hover {
+  color: white-color !important;
+  background-color: btn-hover !important;
+}
