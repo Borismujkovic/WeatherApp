@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.header a{
+  color: white-color;
+  text-decoration: none;
+}
+
 .btn {
   color: white-color;
 }

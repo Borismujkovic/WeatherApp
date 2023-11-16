@@ -24,7 +24,7 @@ const Signup = () => {
       <div className={styles.signupContent}>
         <h1>SignUp</h1>
         <FormProvider {...methods}>
-          <form action="" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Row>
               <Col span={24}>
                 <div className={styles.input}>
@@ -33,7 +33,9 @@ const Signup = () => {
                     control={control}
                     name="name"
                     rules={{ required: "Please enter your name" }}
-                    render={({ field }) => <input placeholder="Name" {...field} />}
+                    render={({ field }) => (
+                      <input placeholder="Name" {...field} />
+                    )}
                   />
                 </div>
               </Col>
@@ -44,8 +46,10 @@ const Signup = () => {
                     control={control}
                     name="email"
                     rules={{ required: "Please enter your email" }}
-                    render={({ field }) => <input placeholder="Email" {...field} />}
-                    />
+                    render={({ field }) => (
+                      <input placeholder="Email" {...field} />
+                    )}
+                  />
                 </div>
               </Col>
               <Col span={24}>
@@ -55,7 +59,13 @@ const Signup = () => {
                     control={control}
                     name="password"
                     rules={{ required: "Please enter your password" }}
-                    render={({ field }) => <input type="password" placeholder="Password" {...field} />}
+                    render={({ field }) => (
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                      />
+                    )}
                   />
                 </div>
               </Col>
@@ -75,13 +85,23 @@ const Signup = () => {
                 </div>
               </Col> */}
             </Row>
-            <button type="submit" className={styles.submit}>
-              Sign Up
-            </button>
+            <div className={styles.signupBtn}>
+              <button type="submit" className={styles.submit}>
+                Sign Up
+              </button>
+            </div>
           </form>
         </FormProvider>
         <div className={styles.account}>
-          <p>Already have an account, please <br /> <NavLink to='/login'>Sign In</NavLink></p>
+          <p>
+            Already have an account, please <br />{" "}
+            <NavLink to="/login">Sign In</NavLink>
+            <br />
+            or <br />
+            <NavLink to="/">
+            <button className={styles.submit}>Back to Home</button>
+            </NavLink>
+          </p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 2rem;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     background-color: component-bg;
     border-radius: 1rem;
     padding: 1rem;
