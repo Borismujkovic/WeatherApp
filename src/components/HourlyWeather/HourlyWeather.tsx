@@ -2,16 +2,17 @@ import React from 'react';
 import styles from './HourlyWeather.module.css'
 import { hours } from '../../api/api';
 import {Row, Col} from 'antd';
+import { HourlyContainer } from './style';
 
 
 
 const HourlyWeather = () => {
   return (
-    <div className={styles.hourlyWeather}>
+    <HourlyContainer>
       <h3>TODAY'S FORECAST</h3>
-      <div className={styles.singleHours}>
+      <div className='singleHours'>
       {hours.map(hour => (
-        <div className={styles.hourly} key={hour.time}>
+        <div className='hourly' key={hour.time}>
         <Row>
         <Col lg={4} md={5}>
           <span>{hour.time}</span>
@@ -22,8 +23,7 @@ const HourlyWeather = () => {
         </div>
       ))}
       </div>
-      
-    </div>
+      </HourlyContainer>
   )
 }
 

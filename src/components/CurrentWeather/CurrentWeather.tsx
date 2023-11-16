@@ -1,26 +1,29 @@
 import React from "react";
-import styles from './CurrentWeather.module.css';
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
+import { WeatherContainer } from "./style";
 
 const CurrentWeather = () => {
   return (
-    <div>
-      <div className={styles.currentWeather}>
-      <div className={styles.weatherInfo}>
-        <div className={styles.currentCity}>
-          <h2>Madrid</h2>
-          <span>Chance of rain: 0%</span>
+    <WeatherContainer>
+      <div className="currentWeather">
+        <div className="weatherInfo">
+          <div className="currentCity">
+            <h2>Madrid</h2>
+            <span>Chance of rain: 0%</span>
+          </div>
+          <p className="temperature">31°</p>
         </div>
-        <p className={styles.temperature}>31°</p>
+        <img
+          src="https://freesvg.org/storage/img/thumb/1364063978.png"
+          alt="sun"
+        />
       </div>
-      <img src="https://freesvg.org/storage/img/thumb/1364063978.png" alt="sun" />
-      </div>
-    <Button type="text" className={styles.favoritesBtn}>
-    <AiOutlineStar />
+      <Button type="text" className="favoritesBtn">
+        <AiOutlineStar />
         Add to favorites
       </Button>
-    </div>
+    </WeatherContainer>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./SignIn.module.css";
 import { Row, Col } from "antd";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { SignInFormValues } from "./SignIn.types";
 import { NavLink } from "react-router-dom";
+import { AuthContainer } from "./style";
 
 const SignIn = () => {
   const methods = useForm<SignInFormValues>();
@@ -17,14 +17,14 @@ const SignIn = () => {
   };
 
   return (
-    <div className={styles.login}>
-      <div className={styles.loginContent}>
+    <AuthContainer>
+      <div className='loginContent'>
         <h1>Login</h1>
         <FormProvider {...methods}>
-          <form action="" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Row>
               <Col span={24}>
-                <div className={styles.input}>
+                <div className='input'>
                   <label htmlFor="">Email</label>
                   <Controller
                     name="email"
@@ -36,7 +36,7 @@ const SignIn = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className={styles.input}>
+                <div className='input'>
                   <label htmlFor="">Password</label>
                   <Controller
                     name="password"
@@ -52,24 +52,24 @@ const SignIn = () => {
                 </div>
               </Col>
             </Row>
-            <div className={styles.loginBtn}>
-              <button className={styles.submit}>Login</button>
+            <div className='loginBtn'>
+              <button className='submit'>Login</button>
             </div>
           </form>
         </FormProvider>
-        <div className={styles.account}>
+        <div className='account'>
           <p>
             Don't have an account, please <br />{" "}
             <NavLink to="/register">Sign Up</NavLink>
             <br />
             or <br />
             <NavLink to="/">
-            <button className={styles.submit}>Back to Home</button>
+            <button className='submit'>Back to Home</button>
             </NavLink>
           </p>
         </div>
       </div>
-    </div>
+      </AuthContainer>
   );
 };
 
