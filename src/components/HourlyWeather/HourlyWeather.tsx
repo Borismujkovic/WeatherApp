@@ -11,7 +11,7 @@ const HourlyWeather = () => {
       <h3>TODAY'S FORECAST</h3>
       <div className={styles.singleHours}>
       {hours.map(hour => (
-        <div className={styles.hourly}>
+        <div className={styles.hourly} key={hour.time}>
         <Row>
         <Col lg={4} md={5}>
           <span>{hour.time}</span>

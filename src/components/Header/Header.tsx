@@ -7,7 +7,9 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div className={styles.header}>
+      <NavLink to='/'>
       <h1>Floyd MayWeather App</h1>
+      </NavLink>
       <NavLink to="/login">
       <Button type="text" className={styles.btn}>
         <AiOutlineUser />

@@ -7,7 +7,7 @@ const DailyWeather = () => {
     <div className={styles.daily}>
       <h3>7-DAY FORECAST</h3>
         {days.map(day => (
-          <div className={styles.singleDay}>
+          <div className={styles.singleDay} key={day.day}>
           <p>{day.day}</p>
           <div className={styles.weatherType}>
             <img src={day.icon} alt="" />

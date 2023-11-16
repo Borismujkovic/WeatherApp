@@ -10,12 +10,11 @@ const SignIn = () => {
   const { handleSubmit, control, formState } = methods;
   const { errors } = formState;
 
-
-  const onSubmit = async ({email, password}: SignInFormValues) => {
-    console.log('email', email)
-    console.log('password', password)
-    console.log('error', errors)
-  }
+  const onSubmit = async ({ email, password }: SignInFormValues) => {
+    console.log("email", email);
+    console.log("password", password);
+    console.log("error", errors);
+  };
 
   return (
     <div className={styles.login}>
@@ -30,7 +29,9 @@ const SignIn = () => {
                   <Controller
                     name="email"
                     control={control}
-                    render={({ field }) => <input  placeholder="Email" {...field} />}
+                    render={({ field }) => (
+                      <input placeholder="Email" {...field} />
+                    )}
                   />
                 </div>
               </Col>
@@ -40,18 +41,32 @@ const SignIn = () => {
                   <Controller
                     name="password"
                     control={control}
-                    render={({ field }) => <input type="password" placeholder="Password" {...field} />}
+                    render={({ field }) => (
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                      />
+                    )}
                   />
                 </div>
               </Col>
             </Row>
-            <button className={styles.submit}>
-              Login
-            </button>
+            <div className={styles.loginBtn}>
+              <button className={styles.submit}>Login</button>
+            </div>
           </form>
         </FormProvider>
         <div className={styles.account}>
-          <p>Don't have an account, please <br /> <NavLink to='/register'>Sign Up</NavLink></p>
+          <p>
+            Don't have an account, please <br />{" "}
+            <NavLink to="/register">Sign Up</NavLink>
+            <br />
+            or <br />
+            <NavLink to="/">
+            <button className={styles.submit}>Back to Home</button>
+            </NavLink>
+          </p>
         </div>
       </div>
     </div>

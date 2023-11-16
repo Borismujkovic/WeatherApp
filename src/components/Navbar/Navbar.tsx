@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Navbar.module.css";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { CiLocationOn } from "react-icons/ci";
-import { AiOutlineUser, AiOutlineStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
@@ -21,12 +21,6 @@ const NavBar = () => {
           <NavLink to="/map">
             <CiLocationOn />
             Map
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">
-            <AiOutlineUser />
-            Register
           </NavLink>
         </li>
         <li>

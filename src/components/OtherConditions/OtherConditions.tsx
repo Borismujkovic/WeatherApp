@@ -10,7 +10,7 @@ const OtherConditions = () => {
       <div className={styles.singleCondition}>
         <Row>
         {conditions.map((condition) => (
-        <Col lg={12} md={6}>
+        <Col lg={12} md={6} key={condition.title}>
           <div className={styles.condition}>
             <img src={condition.icon} alt="" />
             <div>
