@@ -1,26 +1,47 @@
-import React from "react";
-import styles from './CurrentWeather.module.css';
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
+import { WeatherContainer } from "./style";
+import { useQuery } from "react-query";
+import { getWeather } from "../../api/real-api";
+import loader from "../../assets/infinite-spinner.svg";
+import Loading from "../../utils/Loading";
+
 
 const CurrentWeather = () => {
+  const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
+  const weather = data?.data;
+  
+
+  if (isLoading)
+    return <Loading />;
+  if (isError)
+    return (
+      <>
+        <h2>Something went wrong...</h2>
+        <p>{error?.toString()}</p>
+      </>
+    );
+
   return (
-    <div>
-      <div className={styles.currentWeather}>
-      <div className={styles.weatherInfo}>
-        <div className={styles.currentCity}>
-          <h2>Madrid</h2>
-          <span>Chance of rain: 0%</span>
+    <WeatherContainer>
+      <div className="currentWeather">
+        <div className="weatherInfo">
+          <div className="currentCity">
+            <h2>{weather.location.name}</h2>
+            <span>Feels like: {weather.current.feelslike}°</span>
+          </div>
+          <p className="temperature">{weather.current.temperature}°</p>
         </div>
-        <p className={styles.temperature}>31°</p>
+        <img
+          src={weather.current.weather_icons}
+          alt="sun"
+        />
       </div>
-      <img src="https://freesvg.org/storage/img/thumb/1364063978.png" alt="sun" />
-      </div>
-    <Button type="text" className={styles.favoritesBtn}>
-    <AiOutlineStar />
+      <Button type="text" className="favoritesBtn">
+        <AiOutlineStar />
         Add to favorites
       </Button>
-    </div>
+    </WeatherContainer>
   );
 };
 

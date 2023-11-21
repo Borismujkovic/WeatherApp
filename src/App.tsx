@@ -1,49 +1,21 @@
-import React from 'react';
-import './styles/App.css';
-import Landing from './pages/Landing';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomeLayout from './pages/HomeLayout';
-import Map from './pages/Map';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import FavoritesPage from './pages/FavoritesPage';
+import "./styles/App.css";
+import { RouterProvider } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { router } from "./utils/routing";
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-      },
-      {
-        path: 'map',
-        element: <Map />
-      },
-      {
-        path: 'favorites',
-        element: <FavoritesPage />
-      }
-    ]
-  },
-  {
-    path: '/login',
-    element: <Login />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  }
-])
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <RouterProvider router={router} />
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <header className="App-header">
+          <RouterProvider router={router} />
+        </header>
+      </div>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

@@ -1,9 +1,8 @@
-import React from "react";
-import styles from "./Signup.module.css";
 import { Row, Col } from "antd";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { SignUpFormValues } from "./Signup.types";
 import { NavLink } from "react-router-dom";
+import { AuthContainer } from "../SignIn/style";
 
 const Signup = () => {
   const methods = useForm<SignUpFormValues>();
@@ -20,14 +19,14 @@ const Signup = () => {
   };
 
   return (
-    <div className={styles.signup}>
-      <div className={styles.signupContent}>
+    <AuthContainer>
+      <div className="loginContent">
         <h1>SignUp</h1>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Row>
               <Col span={24}>
-                <div className={styles.input}>
+                <div className="input">
                   <label htmlFor="name">Full Name</label>
                   <Controller
                     control={control}
@@ -40,7 +39,7 @@ const Signup = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className={styles.input}>
+                <div className="input">
                   <label htmlFor="email">Email</label>
                   <Controller
                     control={control}
@@ -53,7 +52,7 @@ const Signup = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className={styles.input}>
+                <div className="input">
                   <label htmlFor="password">Password</label>
                   <Controller
                     control={control}
@@ -85,26 +84,25 @@ const Signup = () => {
                 </div>
               </Col> */}
             </Row>
-            <div className={styles.signupBtn}>
-              <button type="submit" className={styles.submit}>
+            <div className="loginBtn">
+              <button type="submit" className="submit">
                 Sign Up
               </button>
             </div>
           </form>
         </FormProvider>
-        <div className={styles.account}>
+        <div className="account">
           <p>
-            Already have an account, please <br />{" "}
+            <span>Already have an account, please</span>{" "}
             <NavLink to="/login">Sign In</NavLink>
-            <br />
-            or <br />
+            <span>or</span>
             <NavLink to="/">
-            <button className={styles.submit}>Back to Home</button>
+              <button className="submit">Back to Home</button>
             </NavLink>
           </p>
         </div>
       </div>
-    </div>
+    </AuthContainer>
   );
 };
 

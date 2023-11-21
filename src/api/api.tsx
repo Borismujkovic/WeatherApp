@@ -108,17 +108,17 @@ export const conditions = [
 
 export const cities = [ {
   id: 1,
-  city: "Belgrade",
+  name: "Belgrade",
 },
 {
   id: 2,
-  city: "Madrid",
+  name: "Madrid",
 },
 {
   id: 3,
-  city: "Moscow",
+  name: "Moscow",
 },
 {
   id: 4,
-  city: "Kyiv",
+  name: "Kyiv",
 },];

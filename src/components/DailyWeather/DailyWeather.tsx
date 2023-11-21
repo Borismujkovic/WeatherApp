@@ -1,22 +1,23 @@
 import React from 'react';
-import styles from './DailyWeather.module.css';
 import { days } from '../../api/api';
+import { DailyContainer } from './style';
+import { Weather } from './DailyWeather.types';
 
 const DailyWeather = () => {
   return (
-    <div className={styles.daily}>
+    <DailyContainer>
       <h3>7-DAY FORECAST</h3>
-        {days.map(day => (
-          <div className={styles.singleDay} key={day.day}>
+        {days.map((day: Weather) => (
+          <div className="singleDay" key={day.day}>
           <p>{day.day}</p>
-          <div className={styles.weatherType}>
-            <img src={day.icon} alt="" />
+          <div className="weatherType">
+            <img src={day.icon} alt="daily-weather-icon" />
             <p>{day.weather}</p>
           </div>
           <p>{`${day.maxTemperature}/${day.minTemperature}`}</p>
       </div>
         ))}
-    </div>
+    </DailyContainer>
   )
 }
 
