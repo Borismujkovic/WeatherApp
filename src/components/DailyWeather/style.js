@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const theme ={
+const theme = {
   colors: {
-      secondary: '#202b3b',
-      white: '#FFFFFF'
-    },
-    text: {
-      large: '2.5rem',
-      small: '1rem'
-    }
-}
+    secondary: "#202b3b",
+    white: "#FFFFFF",
+  },
+  text: {
+    large: "2.5rem",
+    small: "1rem",
+  },
+};
 
 export const DailyContainer = styled.div`
   background-color: ${theme.colors.secondary};
@@ -36,7 +36,7 @@ export const DailyContainer = styled.div`
       align-items: center;
       gap: 0.5rem;
     }
-    
+
     p {
       font-size: ${theme.text.small};
       color: ${theme.colors.white};

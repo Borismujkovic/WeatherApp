@@ -4,14 +4,20 @@ import { ConditionsStyle } from "./style";
 import { Conditions } from "./OtherConditions.type";
 import { useQuery } from "react-query";
 import { getWeather } from "../../api/real-api";
-import loader from "../../assets/infinite-spinner.svg";
+
+import { MdOutlineVisibility } from "react-icons/md";
+import { WiHumidity } from "react-icons/wi";
+import { LuSunMedium } from "react-icons/lu";
+import { FaThermometerThreeQuarters } from "react-icons/fa";
+import Loading from "../../utils/Loading";
 
 const OtherConditions = () => {
   const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
+  const weather = data?.data;
   
 
   if (isLoading)
-    return <img src={loader} alt="Loading..." width={50} height={50} />;
+    return <Loading />;
   if (isError)
     return (
       <>
@@ -20,7 +26,6 @@ const OtherConditions = () => {
       </>
     );
 
-    const weather = data?.data;
 
   return (
     <ConditionsStyle>
@@ -29,37 +34,37 @@ const OtherConditions = () => {
         <Row>
           <Col lg={12} md={6}>
           <div className="condition">
-                <img src={loader} alt="conditions-icon" />
+          <WiHumidity />
                 <div>
                   <span>Humidity:</span>
-                  <p>{weather.current.humidity}°</p>
+                  <p>{weather.current.humidity}%</p>
                 </div>
               </div>
               </Col>
               <Col lg={12} md={6}>
               <div className="condition">
-                <img src={loader} alt="conditions-icon" />
+              <FaThermometerThreeQuarters />
                 <div>
                   <span>Pressure:</span>
-                  <p>{weather.current.pressure}°</p>
+                  <p>{weather.current.pressure} hPa</p>
                 </div>
               </div>
               </Col>
               <Col lg={12} md={6}>
               <div className="condition">
-                <img src={loader} alt="conditions-icon" />
+              <MdOutlineVisibility />
                 <div>
                   <span>Visibility:</span>
-                  <p>{weather.current.visibility}°</p>
+                  <p>{weather.current.visibility} km</p>
                 </div>
               </div>
               </Col>
               <Col lg={12} md={6}>
               <div className="condition">
-                <img src={loader} alt="conditions-icon" />
+              <LuSunMedium />
                 <div>
                   <span>UV:</span>
-                  <p>{weather.current.uv_index}°</p>
+                  <p>{weather.current.uv_index}</p>
                 </div>
               </div>
               </Col>

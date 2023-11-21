@@ -52,23 +52,20 @@ const SignIn = () => {
               </Col>
             </Row>
             <div className="loginBtn">
-              <button className='submit'>Login</button>
+              <button className="submit">Login</button>
             </div>
           </form>
         </FormProvider>
-        <div className='account'>
-          <p>
-            Don't have an account, please <br />{" "}
-            <NavLink to="/register">Sign Up</NavLink>
-            <br />
-            or <br />
-            <NavLink to="/">
-            <button className='submit'>Back to Home</button>
-            </NavLink>
-          </p>
+        <div className="account">
+          <span>Don't have an account, please</span>
+          <NavLink to="/register">Sign Up</NavLink>
+          <span>or</span>
+          <NavLink to="/">
+            <button className="submit">Back to Home</button>
+          </NavLink>
         </div>
       </div>
-      </AuthContainer>
+    </AuthContainer>
   );
 };
 

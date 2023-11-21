@@ -85,7 +85,7 @@ const Signup = () => {
               </Col> */}
             </Row>
             <div className="loginBtn">
-              <button type="submit" className='submit'>
+              <button type="submit" className="submit">
                 Sign Up
               </button>
             </div>
@@ -93,17 +93,16 @@ const Signup = () => {
         </FormProvider>
         <div className="account">
           <p>
-            Already have an account, please <br />{" "}
+            <span>Already have an account, please</span>{" "}
             <NavLink to="/login">Sign In</NavLink>
-            <br />
-            or <br />
+            <span>or</span>
             <NavLink to="/">
-            <button className="submit">Back to Home</button>
+              <button className="submit">Back to Home</button>
             </NavLink>
           </p>
         </div>
       </div>
-      </AuthContainer>
+    </AuthContainer>
   );
 };
 

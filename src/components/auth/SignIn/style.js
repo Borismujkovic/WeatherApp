@@ -20,8 +20,8 @@ export const AuthContainer = styled.div`
     border-radius: 1rem;
     width: 35%;
     box-shadow: 0 0.5rem 2rem 0 ${theme.colors.secondary};
-    
-    h1{
+
+    h1 {
       text-align: center;
     }
 
@@ -66,6 +66,7 @@ export const AuthContainer = styled.div`
         color: ${theme.colors.white};
         font-weight: 700;
         cursor: pointer;
+        display: block;
       }
       .submit {
         font-size: 1rem;
@@ -76,7 +77,7 @@ export const AuthContainer = styled.div`
         border: 1px solid ${theme.colors.white};
         color: ${theme.colors.white};
         cursor: pointer;
-        margin: 1rem auto;
+        margin: 0.5rem 0;
         &:hover {
           background-color: ${theme.colors.primary};
         }

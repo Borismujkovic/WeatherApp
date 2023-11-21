@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const theme ={
+const theme = {
   colors: {
-      secondary: '#202b3b',
-      white: '#FFFFFF'
-    },
-}
+    secondary: "#202b3b",
+    white: "#FFFFFF",
+  },
+};
 
 export const ConditionsStyle = styled.div`
   background-color: ${theme.colors.secondary};
@@ -23,6 +23,10 @@ export const ConditionsStyle = styled.div`
     margin: 1rem;
     span {
       font-size: 1.3em;
+    }
+    svg {
+      width: 8%;
+      height: 8%;
     }
     p {
       font-size: 1.5rem;

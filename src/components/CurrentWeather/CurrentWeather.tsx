@@ -4,14 +4,16 @@ import { WeatherContainer } from "./style";
 import { useQuery } from "react-query";
 import { getWeather } from "../../api/real-api";
 import loader from "../../assets/infinite-spinner.svg";
+import Loading from "../../utils/Loading";
 
 
 const CurrentWeather = () => {
   const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
+  const weather = data?.data;
   
 
   if (isLoading)
-    return <img src={loader} alt="Loading..." width={50} height={50} />;
+    return <Loading />;
   if (isError)
     return (
       <>
@@ -19,10 +21,6 @@ const CurrentWeather = () => {
         <p>{error?.toString()}</p>
       </>
     );
-
-    const weather = data?.data;
-
-  console.log(data?.data);
 
   return (
     <WeatherContainer>

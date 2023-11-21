@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-const theme ={
-    colors: {
-        secondary: '#202b3b',
-        white: '#FFFFFF'
-      },
-      text: {
-        large: '2.5rem',
-      }
-}
+const theme = {
+  colors: {
+    secondary: "#202b3b",
+    white: "#FFFFFF",
+  },
+  text: {
+    large: "2.5rem",
+  },
+};
 
 export const WeatherContainer = styled.div`
 .currentWeather{

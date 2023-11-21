@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Autocomplete from "react-autocomplete";
 import { cities } from '../../api/api';
 import { Link } from 'react-router-dom';
 import { Container } from './style';
-import { Cities } from '../../models/models';
+import { Cities } from '../../types/types';
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -47,7 +47,7 @@ const Search = () => {
             </div>
           </Link>
         )}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
         onSelect={handleSelect}
         menuStyle={{
           position: "fixed",

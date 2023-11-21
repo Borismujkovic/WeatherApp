@@ -20,9 +20,10 @@ export const HeaderContainer = styled.div`
   }
   .btn {
     color: ${theme.colors.white};
-    &hover {
-      color: ${theme.colors.white};
+    &:hover {
+      color: ${theme.colors.white} !important;
       background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
     }
   }
 `;
