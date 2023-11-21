@@ -3,6 +3,7 @@ import Autocomplete from "react-autocomplete";
 import { cities } from '../../api/api';
 import { Link } from 'react-router-dom';
 import { Container } from './style';
+import { Cities } from '../../models/models';
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -13,7 +14,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    const filteredCities = cities.filter(city => city.city.toLowerCase().includes(search.toLowerCase()))
+    const filteredCities = cities.filter((city: Cities) => city?.name?.toLowerCase().includes(search?.toLowerCase()))
     setCity(filteredCities);
   }, [search]);
 
@@ -46,7 +47,7 @@ const Search = () => {
             </div>
           </Link>
         )}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
         onSelect={handleSelect}
         menuStyle={{
           position: "fixed",

@@ -1,4 +1,3 @@
-import React from "react";
 import { Row, Col } from "antd";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { SignInFormValues } from "./SignIn.types";
@@ -18,13 +17,13 @@ const SignIn = () => {
 
   return (
     <AuthContainer>
-      <div className='loginContent'>
+      <div className="loginContent">
         <h1>Login</h1>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Row>
               <Col span={24}>
-                <div className='input'>
+                <div className="input">
                   <label htmlFor="">Email</label>
                   <Controller
                     name="email"
@@ -36,7 +35,7 @@ const SignIn = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className='input'>
+                <div className="input">
                   <label htmlFor="">Password</label>
                   <Controller
                     name="password"
@@ -52,7 +51,7 @@ const SignIn = () => {
                 </div>
               </Col>
             </Row>
-            <div className='loginBtn'>
+            <div className="loginBtn">
               <button className='submit'>Login</button>
             </div>
           </form>

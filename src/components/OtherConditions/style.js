@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
-export const Conditions = styled.div`
-  background-color: #202b3b;
+const theme ={
+  colors: {
+      secondary: '#202b3b',
+      white: '#FFFFFF'
+    },
+}
+
+export const ConditionsStyle = styled.div`
+  background-color: ${theme.colors.secondary};
   border-radius: 1rem;
   padding: 1rem;
   img {
@@ -19,7 +26,7 @@ export const Conditions = styled.div`
     }
     p {
       font-size: 1.5rem;
-      color: #FFFFFF;
+      color: ${theme.colors.white};
     }
   }
 `;

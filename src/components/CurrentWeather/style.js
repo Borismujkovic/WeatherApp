@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const theme ={
+    colors: {
+        secondary: '#202b3b',
+        white: '#FFFFFF'
+      },
+      text: {
+        large: '2.5rem',
+      }
+}
+
 export const WeatherContainer = styled.div`
 .currentWeather{
     display: flex;
@@ -10,12 +20,12 @@ export const WeatherContainer = styled.div`
         flex-direction: column;
         justify-content: space-between;
         h2{
-            color: #FFFFFF;
-            font-size: 2.5rem;
+            color: ${theme.colors.white};
+            font-size: ${theme.text.large};
         }
         .temperature{
-            font-size: 2.5rem;
-            color: #FFFFFF;
+            font-size: ${theme.text.large};
+            color: ${theme.colors.white};
             font-weight: 700;
         }
     }
@@ -24,12 +34,12 @@ export const WeatherContainer = styled.div`
 .favoritesBtn{
     display: flex;
     align-items: center;
-    background-color: #202b3b;
-    color: #FFFFFF;
+    background-color: ${theme.colors.secondary};;
+    color: ${theme.colors.white};
     &:hover{
-        background-color: #202b3b !important;
-        color: #FFFFFF !important;
-        border: 1px solid #FFFFFF;
+        background-color: ${theme.colors.secondary}; !important;
+        color: ${theme.colors.white} !important;
+        border: 1px solid ${theme.colors.white};
     }
 }
 `;

@@ -1,20 +1,28 @@
 import styled from "styled-components";
 
+const theme = {
+  colors: {
+    primary: "#0b131e",
+    secondary: "#202b3b",
+    white: "#FFFFFF",
+  },
+};
+
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #202b3b;
+  background-color: ${theme.colors.secondary};
   padding: 1rem 1.5rem;
   align-items: center;
   a {
-    color: #ffffff;
+    color: ${theme.colors.white};
     text-decoration: none;
   }
   .btn {
-    color: #ffffff;
+    color: ${theme.colors.white};
     &hover {
-      color: #ffffff;
-      background-color: #0b131e;
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
     }
   }
 `;

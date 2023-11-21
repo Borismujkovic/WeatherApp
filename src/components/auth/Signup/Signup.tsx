@@ -1,4 +1,3 @@
-import React from "react";
 import { Row, Col } from "antd";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { SignUpFormValues } from "./Signup.types";
@@ -21,13 +20,13 @@ const Signup = () => {
 
   return (
     <AuthContainer>
-      <div className='loginContent'>
+      <div className="loginContent">
         <h1>SignUp</h1>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Row>
               <Col span={24}>
-                <div className='input'>
+                <div className="input">
                   <label htmlFor="name">Full Name</label>
                   <Controller
                     control={control}
@@ -40,7 +39,7 @@ const Signup = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className='input'>
+                <div className="input">
                   <label htmlFor="email">Email</label>
                   <Controller
                     control={control}
@@ -53,7 +52,7 @@ const Signup = () => {
                 </div>
               </Col>
               <Col span={24}>
-                <div className='input'>
+                <div className="input">
                   <label htmlFor="password">Password</label>
                   <Controller
                     control={control}
@@ -85,21 +84,21 @@ const Signup = () => {
                 </div>
               </Col> */}
             </Row>
-            <div className='loginBtn'>
+            <div className="loginBtn">
               <button type="submit" className='submit'>
                 Sign Up
               </button>
             </div>
           </form>
         </FormProvider>
-        <div className='account'>
+        <div className="account">
           <p>
             Already have an account, please <br />{" "}
             <NavLink to="/login">Sign In</NavLink>
             <br />
             or <br />
             <NavLink to="/">
-            <button className='submit'>Back to Home</button>
+            <button className="submit">Back to Home</button>
             </NavLink>
           </p>
         </div>

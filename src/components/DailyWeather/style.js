@@ -1,9 +1,20 @@
 import styled from "styled-components";
 
+const theme ={
+  colors: {
+      secondary: '#202b3b',
+      white: '#FFFFFF'
+    },
+    text: {
+      large: '2.5rem',
+      small: '1rem'
+    }
+}
+
 export const DailyContainer = styled.div`
-  background-color: #202b3b;
-  border-radius: 1rem;
-  padding: 1rem;
+  background-color: ${theme.colors.secondary};
+  border-radius: ${theme.text.small};
+  padding: ${theme.text.small};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,7 +24,7 @@ export const DailyContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid ${theme.colors.white};
 
     img {
       width: 50px;
@@ -27,8 +38,8 @@ export const DailyContainer = styled.div`
     }
     
     p {
-      font-size: 1rem;
-      color: #ffffff;
+      font-size: ${theme.text.small};
+      color: ${theme.colors.white};
       font-weight: 600;
     }
   }

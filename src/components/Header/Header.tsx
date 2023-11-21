@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { Button } from "antd";
 import { NavLink } from "react-router-dom";
@@ -11,7 +10,7 @@ const Header = () => {
         <h1>Floyd MayWeather App</h1>
       </NavLink>
       <NavLink to="/login">
-        <Button type="text" className='btn'>
+        <Button type="text" className="btn">
           <AiOutlineUser />
           LogIn/Register
         </Button>

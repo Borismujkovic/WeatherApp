@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
+const theme ={
+    colors: {
+        secondary: '#202b3b',
+        white: '#FFFFFF'
+      },
+}
+
 export const Navbar = styled.div`
 display: flex;
 flex-direction: column;
 gap: 2rem;
 align-items: center;
 justify-content: flex-start;
-background-color: #202b3b;
+background-color: ${theme.colors.secondary};
 border-radius: 1rem;
 padding: 1rem;
 min-height: 100vh;
