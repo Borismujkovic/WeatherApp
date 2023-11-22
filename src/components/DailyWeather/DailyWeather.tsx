@@ -1,9 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 import { days } from '../../api/api';
 import { DailyContainer } from './style';
 import { Weather } from './DailyWeather.types';
 
-const DailyWeather = () => {
+const DailyWeather: FC = () => {
   return (
     <DailyContainer>
       <h3>7-DAY FORECAST</h3>

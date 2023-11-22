@@ -1,9 +1,10 @@
+import { FC } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { Button } from "antd";
 import { NavLink } from "react-router-dom";
 import { HeaderContainer } from "./style";
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <HeaderContainer>
       <NavLink to="/">

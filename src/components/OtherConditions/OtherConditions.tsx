@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { conditions } from "../../api/api";
 import { Row, Col } from "antd";
 import { ConditionsStyle } from "./style";
@@ -11,7 +12,7 @@ import { LuSunMedium } from "react-icons/lu";
 import { FaThermometerThreeQuarters } from "react-icons/fa";
 import Loading from "../../utils/Loading";
 
-const OtherConditions = () => {
+const OtherConditions: FC = () => {
   const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
   const weather = data?.data;
   

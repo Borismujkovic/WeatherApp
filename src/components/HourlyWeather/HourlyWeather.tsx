@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { hours } from "../../api/api";
 import { HourlyContainer } from "./style";
 import { Weather } from "./HourlyWeather.type";
 
-const HourlyWeather = () => {
+const HourlyWeather: FC = () => {
   const currentHour = new Date().getHours();
 
   return (
