@@ -1,20 +1,18 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import Autocomplete from "react-autocomplete";
 import { cities } from '../../api/api';
-import { Link } from 'react-router-dom';
 import { Container } from './style';
-import { Cities } from '../../types/types';
 
-const Search = () => {
-  const [search, setSearch] = useState("");
-  const [city, setCity] = useState(cities);
+const Search: FC = () => {
+  const [search, setSearch] = useState<string>("");
+  const [city, setCity] = useState<string[]>(cities);
 
   const handleSelect = (selectedValue: string) => {
     setSearch(selectedValue);
   };
 
   useEffect(() => {
-    const filteredCities = cities.filter((city: Cities) => city?.name?.toLowerCase().includes(search?.toLowerCase()))
+    const filteredCities = cities.filter((city: string) => city?.toLowerCase().includes(search?.toLowerCase()))
     setCity(filteredCities);
   }, [search]);
 
@@ -28,11 +26,10 @@ const Search = () => {
         items={
           search ? city : []
         }
-        getItemValue={(item) => item.city}
-        renderItem={(item, isHighlighted: boolean) => (
-          <Link to={`/${item.id}`} key={item.id}>
+        getItemValue={(item: string) => item}
+        renderItem={(item: string, isHighlighted: boolean) => (
             <div
-              key={item.id}
+              key={item}
               style={{
                 background: isHighlighted ? "lightgray" : "white",
                 padding: "10px",
@@ -43,9 +40,8 @@ const Search = () => {
                 borderBottom: "1px solid #282c34",
               }}
             >
-              {item.city || []}
+              {item || []}
             </div>
-          </Link>
         )}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
         onSelect={handleSelect}

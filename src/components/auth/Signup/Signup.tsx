@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { Row, Col } from "antd";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { SignUpFormValues } from "./Signup.types";
 import { NavLink } from "react-router-dom";
 import { AuthContainer } from "../SignIn/style";
 
-const Signup = () => {
+const Signup: FC = () => {
   const methods = useForm<SignUpFormValues>();
   const { handleSubmit, control, formState, watch } = methods;
   const { errors } = formState;

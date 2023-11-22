@@ -1,13 +1,13 @@
+import { FC } from "react";
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
 import { WeatherContainer } from "./style";
 import { useQuery } from "react-query";
 import { getWeather } from "../../api/real-api";
-import loader from "../../assets/infinite-spinner.svg";
 import Loading from "../../utils/Loading";
 
 
-const CurrentWeather = () => {
+const CurrentWeather: FC = () => {
   const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
   const weather = data?.data;
   
