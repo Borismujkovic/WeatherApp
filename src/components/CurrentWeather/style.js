@@ -29,6 +29,9 @@ export const WeatherContainer = styled.div`
             font-weight: 700;
         }
     }
+    img{
+      width: 20%;
+    }
 }
 
 .favoritesBtn{

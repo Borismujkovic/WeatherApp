@@ -1,4 +1,1 @@
-export type Cities = {
-    id: number;
-    name: string;
-  };
+export type Cities = string;

@@ -1,22 +1,31 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import Autocomplete from "react-autocomplete";
-import { cities } from '../../api/api';
-import { Link } from 'react-router-dom';
-import { Container } from './style';
-import { Cities } from '../../types/types';
+import { cities } from "../../api/api";
+import { Container } from "./style";
+import { Cities } from "../../types/types";
+import { getCurrentWeather } from "../../api/real-api";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [city, setCity] = useState(cities);
+  const [selectedCity, setSelectedCity] = useState('')
 
   const handleSelect = (selectedValue: string) => {
-    setSearch(selectedValue);
+    setSelectedCity(selectedValue);
   };
 
   useEffect(() => {
-    const filteredCities = cities.filter((city: Cities) => city?.name?.toLowerCase().includes(search?.toLowerCase()))
+    const filteredCities = cities.filter((city: Cities) =>
+      city.toLowerCase().includes(search?.toLowerCase())
+    );
     setCity(filteredCities);
+    // console.log(filteredCities);
   }, [search]);
+
+useEffect(() => {
+  console.log(selectedCity);
+  getCurrentWeather(selectedCity)
+}, [selectedCity])
 
   return (
     <Container>
@@ -25,12 +34,9 @@ const Search = () => {
           placeholder: "Search",
         }}
         value={search}
-        items={
-          search ? city : []
-        }
-        getItemValue={(item) => item.city}
+        items={search ? city : cities}
+        getItemValue={(item) => item}
         renderItem={(item, isHighlighted: boolean) => (
-          <Link to={`/${item.id}`} key={item.id}>
             <div
               key={item.id}
               style={{
@@ -45,9 +51,10 @@ const Search = () => {
             >
               {item.city || []}
             </div>
-          </Link>
         )}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setSearch(event.target.value)
+        }
         onSelect={handleSelect}
         menuStyle={{
           position: "fixed",
@@ -58,7 +65,7 @@ const Search = () => {
         }}
       />
     </Container>
-  )
-}
+  );
+};
 
 export default Search;
