@@ -9,44 +9,23 @@ import { WeatherContext } from "../../store/weather";
 
 
 const CurrentWeather = () => {
-  // const { data, isLoading, error, isError } = useQuery("weather", () => getCurrentWeather('New York'));
-  // const { data, isLoading, error, isError } = useQuery("weather", () => getFutureWeather('New York'));
-  // const weather = data?.data;
-  // console.log(weather);
-
-  // const context = useContext(WeatherContainer);
-
-  const {weather, isLoading, error, isError} = useContext(WeatherContext);
+  const {weather} = useContext(WeatherContext);
   if (!weather) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
-
-  console.log(weather?.data);
-
-  
-
-  if (isLoading)
-    return <Loading />;
-  if (isError)
-    return (
-      <>
-        <h2>Something went wrong...</h2>
-        <p>{error?.toString()}</p>
-      </>
-    );
 
   return (
     <WeatherContainer>
       <div className="currentWeather">
         <div className="weatherInfo">
           <div className="currentCity">
-            <h2>{weather.data.location.name}</h2>
-            <span>Feels like: {weather.data.current.feelslike_c}°</span>
+            <h2>{weather.location.name}</h2>
+            <span>Feels like: {weather.current.feelslike_c}°</span>
           </div>
-          <p className="temperature">{weather.data.current.temp_c}°</p>
+          <p className="temperature">{weather.current.temp_c}°</p>
         </div>
         <img
-          src={weather.data.current.condition.icon}
+          src={weather.current.condition.icon}
           alt="sun"
         />
       </div>

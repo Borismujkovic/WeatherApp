@@ -1,9 +1,5 @@
-import { conditions } from "../../api/api";
 import { Row, Col } from "antd";
 import { ConditionsStyle } from "./style";
-import { Conditions } from "./OtherConditions.type";
-import { useQuery } from "react-query";
-import { getCurrentWeather } from "../../api/real-api";
 
 import { MdOutlineVisibility } from "react-icons/md";
 import { WiHumidity } from "react-icons/wi";
@@ -14,21 +10,11 @@ import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";
 
 const OtherConditions = () => {
-  // const { data, isLoading, error, isError } = useQuery("weather", () => getCurrentWeather('Belgrade'));
-  // const weather = data?.data;
-  const {weather, isLoading, error, isError} = useContext(WeatherContext);
-  
+  const {weather} = useContext(WeatherContext);
 
-  if (isLoading)
+  if (!weather) {
     return <Loading />;
-  if (isError)
-    return (
-      <>
-        <h2>Something went wrong...</h2>
-        <p>{error?.toString()}</p>
-      </>
-    );
-
+  }
 
   return (
     <ConditionsStyle>
@@ -40,7 +26,7 @@ const OtherConditions = () => {
           <WiHumidity />
                 <div>
                   <span>Humidity:</span>
-                  <p>{weather.data.current.humidity}%</p>
+                  <p>{weather?.current.humidity}%</p>
                 </div>
               </div>
               </Col>
@@ -49,7 +35,7 @@ const OtherConditions = () => {
               <FaThermometerThreeQuarters />
                 <div>
                   <span>Pressure:</span>
-                  <p>{weather.data.current.pressure_mb} hPa</p>
+                  <p>{weather?.current.pressure_mb} hPa</p>
                 </div>
               </div>
               </Col>
@@ -58,7 +44,7 @@ const OtherConditions = () => {
               <MdOutlineVisibility />
                 <div>
                   <span>Visibility:</span>
-                  <p>{weather.data.current.vis_km} km</p>
+                  <p>{weather?.current.vis_km} km</p>
                 </div>
               </div>
               </Col>
@@ -67,7 +53,7 @@ const OtherConditions = () => {
               <LuSunMedium />
                 <div>
                   <span>UV:</span>
-                  <p>{weather.data.current.uv}</p>
+                  <p>{weather?.current.uv}</p>
                 </div>
               </div>
               </Col>

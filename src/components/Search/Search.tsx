@@ -1,14 +1,17 @@
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import Autocomplete from "react-autocomplete";
 import { cities } from "../../api/api";
 import { Container } from "./style";
 import { Cities } from "../../types/types";
-import { getCurrentWeather } from "../../api/real-api";
+import { WeatherContext } from "../../store/weather";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [city, setCity] = useState(cities);
-  const [selectedCity, setSelectedCity] = useState('')
+  const [selectedCity, setSelectedCity] = useState('');
+  const { updateWeather } = useContext(
+    WeatherContext
+  );
 
   const handleSelect = (selectedValue: string) => {
     setSelectedCity(selectedValue);
@@ -19,13 +22,11 @@ const Search = () => {
       city.toLowerCase().includes(search?.toLowerCase())
     );
     setCity(filteredCities);
-    // console.log(filteredCities);
   }, [search]);
 
-useEffect(() => {
-  console.log(selectedCity);
-  getCurrentWeather(selectedCity)
-}, [selectedCity])
+  useEffect(() => {
+      updateWeather(selectedCity);
+  }, [selectedCity]);
 
   return (
     <Container>
@@ -35,7 +36,7 @@ useEffect(() => {
         }}
         value={search}
         items={search ? city : cities}
-        getItemValue={(item) => item}
+        getItemValue={(item: Cities) => item}
         renderItem={(item, isHighlighted: boolean) => (
             <div
               key={item.id}

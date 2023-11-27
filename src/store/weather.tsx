@@ -1,34 +1,33 @@
-import { PropsWithChildren, createContext } from "react"
-import { useQuery, useQueryClient } from "react-query";
+import { PropsWithChildren, createContext, useState } from "react";
 import { getCurrentWeather } from "../api/real-api";
 
 type WeatherProps = {
-    weather: any | null;
-    isLoading: any | null;
-    error: any | null;
-    isError: any | null;
-}
+  weather: any | null;
+  updateWeather: (city: string) => void;
+};
 
 export const WeatherContext = createContext<WeatherProps>({
-    weather: null,
-    isLoading: null,
-    error: null,
-    isError: null,
+  weather: null,
+  updateWeather: () => {},
 });
 
-const WeatherProvider = ({children}: PropsWithChildren) => {
+const WeatherProvider = ({ children }: PropsWithChildren) => {
+  const [weatherData, setWeatherData] = useState<any | null>(null);
 
-    const {data: weather, isLoading, error, isError} = useQuery(["weather"], () => getCurrentWeather('Belgrade'), {
-        refetchInterval: false,
-    })
+  const updateWeather = async (city: string = "Belgrade") => {
+    try {
+      const updatedWeather = await getCurrentWeather(city);
+      setWeatherData(updatedWeather?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    console.log(weather?.data)
+  return (
+    <WeatherContext.Provider value={{ weather: weatherData, updateWeather}}>
+      {children}
+    </WeatherContext.Provider>
+  );
+};
 
-    return (
-        <WeatherContext.Provider value={{weather, isLoading, error, isError}}>
-            {children}
-        </WeatherContext.Provider>
-    )
-}
-
-export {WeatherProvider};
+export { WeatherProvider };
