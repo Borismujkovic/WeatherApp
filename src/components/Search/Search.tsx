@@ -35,12 +35,13 @@ const Search = () => {
           placeholder: "Search",
         }}
         value={search}
-        items={search ? city : cities}
-        getItemValue={(item: Cities) => item}
-        renderItem={(item: Cities, isHighlighted: boolean) => (
+        items={
+          search ? city : []
+        }
+        getItemValue={(item: string) => item}
+        renderItem={(item: string, isHighlighted: boolean) => (
             <div
               key={item}
-              className='autocomplete'
               style={{
                 background: isHighlighted ? "lightgray" : "white",
                 padding: "10px",

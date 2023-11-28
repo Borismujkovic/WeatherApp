@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
 import { WeatherContainer } from "./style";
