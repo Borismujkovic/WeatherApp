@@ -8,7 +8,7 @@ import { WeatherContext } from "../../store/weather";
 const Search = () => {
   const [search, setSearch] = useState("");
   const [city, setCity] = useState(cities);
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState('Belgrade');
   const { updateWeather } = useContext(
     WeatherContext
   );
@@ -37,9 +37,10 @@ const Search = () => {
         value={search}
         items={search ? city : cities}
         getItemValue={(item: Cities) => item}
-        renderItem={(item, isHighlighted: boolean) => (
+        renderItem={(item: Cities, isHighlighted: boolean) => (
             <div
-              key={item.id}
+              key={item}
+              className='autocomplete'
               style={{
                 background: isHighlighted ? "lightgray" : "white",
                 padding: "10px",
@@ -50,7 +51,7 @@ const Search = () => {
                 borderBottom: "1px solid #282c34",
               }}
             >
-              {item.city || []}
+              {item || []}
             </div>
         )}
         onChange={(event: ChangeEvent<HTMLInputElement>) =>

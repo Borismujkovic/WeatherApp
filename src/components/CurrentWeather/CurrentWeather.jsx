@@ -1,8 +1,6 @@
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
 import { WeatherContainer } from "./style";
-import { useQuery } from "react-query";
-import { getCurrentWeather } from "../../api/real-api";
 import Loading from "../../utils/Loading";
 import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";

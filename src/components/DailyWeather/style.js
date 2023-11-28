@@ -15,7 +15,8 @@ export const DailyContainer = styled.div`
   background-color: ${theme.colors.secondary};
   border-radius: ${theme.text.small};
   padding: ${theme.text.small};
-  min-height: 100vh;
+  // min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

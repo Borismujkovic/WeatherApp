@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { getCurrentWeather } from "../api/real-api";
+import { getCurrentWeather } from "../api/service";
 
 type WeatherProps = {
   weather: any | null;
@@ -14,17 +14,18 @@ export const WeatherContext = createContext<WeatherProps>({
 const WeatherProvider = ({ children }: PropsWithChildren) => {
   const [weatherData, setWeatherData] = useState<any | null>(null);
 
-  const updateWeather = async (city: string = "Belgrade") => {
+  const updateWeather = async (city: string) => {
     try {
       const updatedWeather = await getCurrentWeather(city);
-      setWeatherData(updatedWeather?.data);
+      setWeatherData(updatedWeather);
     } catch (error) {
       console.log(error);
     }
   };
 
+
   return (
-    <WeatherContext.Provider value={{ weather: weatherData, updateWeather}}>
+    <WeatherContext.Provider value={{ weather: weatherData, updateWeather }}>
       {children}
     </WeatherContext.Provider>
   );
