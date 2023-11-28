@@ -13,6 +13,7 @@
 .homeLayout {
   padding: 1rem;
   color: #9298a1;
+  min-height: calc(100vh - 75px);
 }
 
 .landing {

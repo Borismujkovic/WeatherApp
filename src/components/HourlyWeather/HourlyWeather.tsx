@@ -1,23 +1,20 @@
-import { FC } from "react";
+import { useContext } from "react";
 import { hours } from "../../api/api";
+import { WeatherContext } from "../../store/weather";
+import Hours from "../Hours/Hours";
 import { HourlyContainer } from "./style";
-import { Weather } from "./HourlyWeather.type";
 
-const HourlyWeather: FC = () => {
-  const currentHour = new Date().getHours();
+
+const HourlyWeather = () => {
+  const { weather } = useContext(WeatherContext);
 
   return (
     <HourlyContainer>
       <h3>TODAY'S FORECAST</h3>
       <div className="singleHours">
-        {hours.map((hour: Weather) => (
-          <div className="hourly" key={hour.time}>
-            {/* SEPARATE COMPONENT */}
-                <span>{currentHour}h</span>
-                <img src={hour.icon} alt="hourly-weather-icon" />
-                <p>{hour.weather}°</p>
-          </div>
-        ))}
+      {hours.map((hour) => (
+        <Hours hour={hour}/>
+))}
       </div>
     </HourlyContainer>
   );

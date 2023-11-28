@@ -1,20 +1,32 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import Autocomplete from "react-autocomplete";
-import { cities } from '../../api/api';
-import { Container } from './style';
+import { cities } from "../../api/api";
+import { Container } from "./style";
+import { Cities } from "../../types/types";
+import { WeatherContext } from "../../store/weather";
 
-const Search: FC = () => {
-  const [search, setSearch] = useState<string>("");
-  const [city, setCity] = useState<string[]>(cities);
+const Search = () => {
+  const [search, setSearch] = useState("");
+  const [city, setCity] = useState(cities);
+  const [selectedCity, setSelectedCity] = useState('Belgrade');
+  const { updateWeather } = useContext(
+    WeatherContext
+  );
 
   const handleSelect = (selectedValue: string) => {
-    setSearch(selectedValue);
+    setSelectedCity(selectedValue);
   };
 
   useEffect(() => {
-    const filteredCities = cities.filter((city: string) => city?.toLowerCase().includes(search?.toLowerCase()))
+    const filteredCities = cities.filter((city: Cities) =>
+      city.toLowerCase().includes(search?.toLowerCase())
+    );
     setCity(filteredCities);
   }, [search]);
+
+  useEffect(() => {
+      updateWeather(selectedCity);
+  }, [selectedCity]);
 
   return (
     <Container>
@@ -43,7 +55,9 @@ const Search: FC = () => {
               {item || []}
             </div>
         )}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setSearch(event.target.value)
+        }
         onSelect={handleSelect}
         menuStyle={{
           position: "fixed",
@@ -54,7 +68,7 @@ const Search: FC = () => {
         }}
       />
     </Container>
-  )
-}
+  );
+};
 
 export default Search;

@@ -2,25 +2,16 @@ import { FC } from "react";
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
 import { WeatherContainer } from "./style";
-import { useQuery } from "react-query";
-import { getWeather } from "../../api/real-api";
 import Loading from "../../utils/Loading";
+import { useContext } from "react";
+import { WeatherContext } from "../../store/weather";
 
 
-const CurrentWeather: FC = () => {
-  const { data, isLoading, error, isError } = useQuery("weather", () => getWeather('New York'));
-  const weather = data?.data;
-  
-
-  if (isLoading)
-    return <Loading />;
-  if (isError)
-    return (
-      <>
-        <h2>Something went wrong...</h2>
-        <p>{error?.toString()}</p>
-      </>
-    );
+const CurrentWeather = () => {
+  const {weather} = useContext(WeatherContext);
+  if (!weather) {
+    return <Loading />
+  }
 
   return (
     <WeatherContainer>
@@ -28,12 +19,12 @@ const CurrentWeather: FC = () => {
         <div className="weatherInfo">
           <div className="currentCity">
             <h2>{weather.location.name}</h2>
-            <span>Feels like: {weather.current.feelslike}°</span>
+            <span>Feels like: {weather.current.feelslike_c}°</span>
           </div>
-          <p className="temperature">{weather.current.temperature}°</p>
+          <p className="temperature">{weather.current.temp_c}°</p>
         </div>
         <img
-          src={weather.current.weather_icons}
+          src={weather.current.condition.icon}
           alt="sun"
         />
       </div>

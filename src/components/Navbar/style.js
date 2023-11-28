@@ -16,7 +16,7 @@ export const Navbar = styled.div`
   background-color: ${theme.colors.secondary};
   border-radius: 1rem;
   padding: 1rem;
-  min-height: 100vh;
+  min-height: 100%;
   img {
     height: 70px;
   }
