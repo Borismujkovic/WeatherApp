@@ -6,11 +6,10 @@ import Loading from "../../utils/Loading";
 import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";
 
-
 const CurrentWeather = () => {
-  const {weather} = useContext(WeatherContext);
+  const { weather } = useContext(WeatherContext);
   if (!weather) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -23,10 +22,7 @@ const CurrentWeather = () => {
           </div>
           <p className="temperature">{weather.current.temp_c}°</p>
         </div>
-        <img
-          src={weather.current.condition.icon}
-          alt="sun"
-        />
+        <img src={weather.current.condition.icon} alt="sun" />
       </div>
       <Button type="text" className="favoritesBtn">
         <AiOutlineStar />

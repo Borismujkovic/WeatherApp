@@ -6,9 +6,9 @@ import { Cities } from "../../types/types";
 import { WeatherContext } from "../../store/weather";
 
 const Search = () => {
-  const [search, setSearch] = useState("");
-  const [city, setCity] = useState(cities);
-  const [selectedCity, setSelectedCity] = useState('Belgrade');
+  const [search, setSearch] = useState<string>("");
+  const [city, setCity] = useState<string[]>(cities);
+  const [selectedCity, setSelectedCity] = useState<string>('Belgrade');
   const { updateWeather } = useContext(
     WeatherContext
   );

@@ -11,6 +11,7 @@ import { WeatherContext } from "../../store/weather";
 
 const OtherConditions = () => {
   const {weather} = useContext(WeatherContext);
+  const currentWeather = weather?.current;
 
   if (!weather) {
     return <Loading />;
@@ -26,7 +27,7 @@ const OtherConditions = () => {
           <WiHumidity />
                 <div>
                   <span>Humidity:</span>
-                  <p>{weather?.current.humidity}%</p>
+                  <p>{currentWeather?.humidity}%</p>
                 </div>
               </div>
               </Col>
@@ -35,7 +36,7 @@ const OtherConditions = () => {
               <FaThermometerThreeQuarters />
                 <div>
                   <span>Pressure:</span>
-                  <p>{weather?.current.pressure_mb} hPa</p>
+                  <p>{currentWeather?.pressure_mb} hPa</p>
                 </div>
               </div>
               </Col>
@@ -44,7 +45,7 @@ const OtherConditions = () => {
               <MdOutlineVisibility />
                 <div>
                   <span>Visibility:</span>
-                  <p>{weather?.current.vis_km} km</p>
+                  <p>{currentWeather?.vis_km} km</p>
                 </div>
               </div>
               </Col>
@@ -53,7 +54,7 @@ const OtherConditions = () => {
               <LuSunMedium />
                 <div>
                   <span>UV:</span>
-                  <p>{weather?.current.uv}</p>
+                  <p>{currentWeather?.uv}</p>
                 </div>
               </div>
               </Col>
