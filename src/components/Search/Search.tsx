@@ -11,6 +11,7 @@ const Search = () => {
   const [city, setCity] = useState(cities);
   const [selectedCity, setSelectedCity] = useState("Belgrade");
   const [userLocation, setUserlocation] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const { updateWeather } = useContext(WeatherContext);
 
   const handleSelect = (selectedValue: string) => {
@@ -28,7 +29,6 @@ const Search = () => {
     updateWeather(selectedCity);
   }, [selectedCity]);
 
-  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     if (!navigator.geolocation) {
