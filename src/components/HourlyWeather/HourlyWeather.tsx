@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";
 import Hours from "../Hours/Hours";
 import { HourlyContainer } from "./style";
-import { Hour } from "../../types/types";
+import type { Hour } from "../../types/types";
 
 const HourlyWeather = () => {
   const { weather } = useContext(WeatherContext);
