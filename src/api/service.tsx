@@ -1,7 +1,12 @@
 import axios from "axios";
 
-const NEW_API_KEY = "656ee67a66d14e1eb74133424232111";
-const apiKey = '26465f192bfa480f8d1bf9ce1a05e119'
+type Location = {
+  latitude: number;
+  longitude: number;
+}
+
+const NEW_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const apiKey = process.env.REACT_APP_LOCATION_API_KEY;
 
 export const getCurrentWeather = async (city: string) => {
   try {
@@ -15,7 +20,8 @@ export const getCurrentWeather = async (city: string) => {
   }
 };
 
-export const getUserLocation = async (latitude: number, longitude: number) => {
+export const getUserLocation = async (options: Location) => {
+  const { latitude, longitude } = options;
   try {
     const res = await axios.get(
       `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=${apiKey}`

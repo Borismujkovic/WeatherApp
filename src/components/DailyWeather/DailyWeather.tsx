@@ -12,7 +12,7 @@ const DailyWeather = () => {
     <DailyContainer>
       <h3>7-DAY FORECAST</h3>
         {dailyweather?.map((day: any) => (
-          <div className="singleDay" key={day.day}>
+          <div className="singleDay" key={day.date}>
           <p>{day.date}</p>
           <div className="weatherType">
             <img src={day.day.condition.icon} alt="daily-weather-icon" />

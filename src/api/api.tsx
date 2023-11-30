@@ -106,5 +106,12 @@ export const conditions = [
   },
 ];
 
-
-export const cities: string[] = ["Belgrade", "Madrid", "Moscow", "Kyiv", "London", "New York", "Pancevo"]
+export const cities: string[] = [
+  "Belgrade",
+  "Madrid",
+  "Moscow",
+  "Kyiv",
+  "London",
+  "New York",
+  "Pancevo",
+];
