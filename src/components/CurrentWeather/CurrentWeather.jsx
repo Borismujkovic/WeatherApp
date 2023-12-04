@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Button } from "antd";
 import { AiOutlineStar } from "react-icons/ai";
 import { WeatherContainer } from "./style";
@@ -7,10 +7,16 @@ import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";
 
 const CurrentWeather = () => {
-  const { weather } = useContext(WeatherContext);
+  const { weather, favoriteCityHandler, favorite } = useContext(WeatherContext);
+  useEffect(() => {
+    console.log(favorite);
+  }, [favorite]);
+  
   if (!weather) {
     return <Loading />;
   }
+  
+  
 
   return (
     <WeatherContainer>
@@ -24,7 +30,11 @@ const CurrentWeather = () => {
         </div>
         <img src={weather.current.condition.icon} alt="sun" />
       </div>
-      <Button type="text" className="favoritesBtn">
+      <Button
+        type="text"
+        className="favoritesBtn"
+        onClick={() => favoriteCityHandler(weather.location.name)}
+      >
         <AiOutlineStar />
         Add to favorites
       </Button>
