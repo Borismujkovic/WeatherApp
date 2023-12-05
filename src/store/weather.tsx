@@ -23,7 +23,6 @@ const WeatherProvider = ({ children }: PropsWithChildren) => {
   const [favoriteCity, setFavoriteCity] = useState<string[]>([]);
 
   const updateWeather = async (city: string) => {
-    console.log(city);
     try {
       const updatedWeather = await getCurrentWeather(city);
       setWeatherData(updatedWeather);
@@ -33,8 +32,9 @@ const WeatherProvider = ({ children }: PropsWithChildren) => {
   };
 
   const favoriteCityHandler = (city: string) => {
-    console.log(city);
-    setFavoriteCity(prevCities => [...prevCities, city]);
+    if(!favoriteCity.includes(city)) {
+      setFavoriteCity(prevCities => [...prevCities, city]);
+    }
   }
 
   const deleteFavoriteCityHandler = (city: string) => {

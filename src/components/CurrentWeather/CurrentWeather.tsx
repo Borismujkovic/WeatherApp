@@ -1,6 +1,6 @@
-import { FC, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "antd";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineStar, AiFillStar  } from "react-icons/ai";
 import { WeatherContainer } from "./style";
 import Loading from "../../utils/Loading";
 import { useContext } from "react";
@@ -8,15 +8,17 @@ import { WeatherContext } from "../../store/weather";
 
 const CurrentWeather = () => {
   const { weather, favoriteCityHandler, favorite } = useContext(WeatherContext);
+  const [isFavorite, setIsFavorite] = useState(false)
+
   useEffect(() => {
-    console.log(favorite);
-  }, [favorite]);
-  
+    if (weather && favorite) {
+      setIsFavorite(favorite.includes(weather.location.name));
+    }
+  }, [favorite, weather]);
+
   if (!weather) {
     return <Loading />;
   }
-  
-  
 
   return (
     <WeatherContainer>
@@ -35,8 +37,8 @@ const CurrentWeather = () => {
         className="favoritesBtn"
         onClick={() => favoriteCityHandler(weather.location.name)}
       >
-        <AiOutlineStar />
-        Add to favorites
+        {isFavorite ? <AiFillStar /> : <AiOutlineStar /> }
+        {isFavorite ?  'Added to favorites' : 'Add to favorites'}
       </Button>
     </WeatherContainer>
   );

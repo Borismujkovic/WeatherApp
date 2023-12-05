@@ -9,19 +9,17 @@ const Favorites: FC = () => {
   const navigate = useNavigate()
 
   const [favorites, setFavorites] = useState<string[]>(favorite || []);
-  console.log(favorite);
 
   useEffect(() => {
     setFavorites(favorite || []);
   }, [favorite]);
 
-  const handleFavoriteWeather = (city: string) => {
-    console.log(city);
+  const handleFavoriteWeather = (city: string): void => {
     updateWeather(city);
     navigate('/')
   };
 
-  const handleDeleteFavoriteCity = (city: string) => {
+  const handleDeleteFavoriteCity = (city: string) :void => {
     deleteFavoriteCityHandler(city);
     setFavorites(prevFavorites => prevFavorites.filter(favoriteCity => favoriteCity !== city));
   }
@@ -34,7 +32,7 @@ const Favorites: FC = () => {
         <div className="remove">
         <button onClick={() => handleDeleteFavoriteCity(city)}>X</button>
         </div>
-        <div className="favorite-content" onClick={() => updateWeather(city)}>
+        <div className="favorite-content" onClick={() => handleFavoriteWeather(city)}>
           <h2>{city}</h2>
           <p>31°</p>
         </div>
