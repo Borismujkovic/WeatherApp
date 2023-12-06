@@ -37,7 +37,7 @@ export const WeatherContainer = styled.div`
 .favoritesBtn{
     display: flex;
     align-items: center;
-    background-color: ${theme.colors.secondary};;
+    background-color: ${theme.colors.secondary};
     color: ${theme.colors.white};
     &:hover{
         background-color: ${theme.colors.secondary}; !important;
