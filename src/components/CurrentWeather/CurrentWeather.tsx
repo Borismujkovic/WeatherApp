@@ -17,7 +17,10 @@ const CurrentWeather = () => {
   }, [favorite, weather]);
 
   if (!weather) {
-    return <Loading />;
+    return<>
+       {/* <Loading /> */}
+       <h1>Please select your location</h1>
+    </>;
   }
 
   return (

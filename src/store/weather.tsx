@@ -34,6 +34,8 @@ const WeatherProvider = ({ children }: PropsWithChildren) => {
   const favoriteCityHandler = (city: string) => {
     if(!favoriteCity.includes(city)) {
       setFavoriteCity(prevCities => [...prevCities, city]);
+    } else {
+      setFavoriteCity(favoriteCity.filter(cities => cities !== city));
     }
   }
 
