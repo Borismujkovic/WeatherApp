@@ -5,7 +5,7 @@ import { Weather } from "../types/types";
 type WeatherProps = {
   weather: Weather | null;
   updateWeather: (city: string) => void;
-  favorite: string[] | null;
+  favorite: string[];
   favoriteCityHandler: (city: string) => void;
   deleteFavoriteCityHandler: (city: string) => void;
 };
@@ -13,7 +13,7 @@ type WeatherProps = {
 export const WeatherContext = createContext<WeatherProps>({
   weather: null,
   updateWeather: () => {},
-  favorite: null,
+  favorite: [],
   favoriteCityHandler: () => {},
   deleteFavoriteCityHandler: () => {},
 });
