@@ -50,12 +50,8 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (userLocation) {
-      updateWeather(userLocation);
-    }
-
-    if (selectedCity) {
-      updateWeather(selectedCity);
+    if(selectedCity || userLocation) {
+      updateWeather(selectedCity || userLocation)
     }
   }, [userLocation, selectedCity]);
 
