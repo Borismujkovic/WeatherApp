@@ -9,10 +9,9 @@ import PlacesAutocomplete, {
 
 const Search = () => {
   const [search, setSearch] = useState<string>("");
-  const [selectedCity, setSelectedCity] = useState<string>("");
-  const [userLocation, setUserlocation] = useState<string>("");
   const [error, setError] = useState<string>("");
   const { updateWeather } = useContext(WeatherContext);
+  const [selectedCity, setSelectedCity] = useState<string>("");
 
   const handleChange = (newAddress: string) => {
     setSearch(newAddress);
@@ -45,7 +44,7 @@ const Search = () => {
           latitude,
           longitude,
         });
-        setUserlocation(currentLocation?.properties?.city);
+        setSelectedCity(currentLocation?.properties?.city);
       },
       (err) => {
         setError(`Error getting location: ${err.message}`);
@@ -54,10 +53,10 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (selectedCity || userLocation) {
-      updateWeather(selectedCity || userLocation);
+    if (selectedCity) {
+      updateWeather(selectedCity);
     }
-  }, [userLocation, selectedCity]);
+  }, [selectedCity]);
 
   useEffect(() => {
     handleUserLocation();
@@ -108,6 +107,7 @@ const Search = () => {
                               color: "black",
                             },
                       })}
+                      key={suggestion.description}
                     >
                       {suggestion.description}
                     </div>

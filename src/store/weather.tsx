@@ -32,21 +32,28 @@ const WeatherProvider = ({ children }: PropsWithChildren) => {
   };
 
   const favoriteCityHandler = (city: string) => {
-    if(!favoriteCity.includes(city)) {
-      setFavoriteCity(prevCities => [...prevCities, city]);
+    if (!favoriteCity.includes(city)) {
+      setFavoriteCity((prevCities) => [...prevCities, city]);
     } else {
-      setFavoriteCity(favoriteCity.filter(cities => cities !== city));
+      setFavoriteCity(favoriteCity.filter((cities) => cities !== city));
     }
-  }
+  };
 
   const deleteFavoriteCityHandler = (city: string) => {
     const cityToRemove = favoriteCity.indexOf(city);
     favoriteCity.splice(cityToRemove, 1);
-  }
-
+  };
 
   return (
-    <WeatherContext.Provider value={{ weather: weatherData, updateWeather, favorite: favoriteCity, favoriteCityHandler, deleteFavoriteCityHandler }}>
+    <WeatherContext.Provider
+      value={{
+        weather: weatherData,
+        updateWeather,
+        favorite: favoriteCity,
+        favoriteCityHandler,
+        deleteFavoriteCityHandler,
+      }}
+    >
       {children}
     </WeatherContext.Provider>
   );
