@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { days } from '../../api/api';
 import { DailyContainer } from './style';
 import { Weather } from './DailyWeather.types';
 import { WeatherContext } from '../../store/weather';
