@@ -21,11 +21,14 @@ export const FavoritesContainer = styled.div`
       background-color: transparent;
       color: ${theme.colors.white};
       border: none;
-      
       margin: 0.3rem 0;
     }
     button:hover {
         background-color: ${theme.colors.secondary};
+    }
+    svg{
+      width: 20px;
+      height: 20px;
     }
   }
   .favorite-content {

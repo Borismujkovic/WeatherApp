@@ -2,6 +2,7 @@ import { FC, useContext, useEffect, useState } from "react";
 import { FavoritesContainer } from "./style";
 import { WeatherContext } from "../../store/weather";
 import { useNavigate } from "react-router-dom";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const Favorites: FC = () => {
   const { favorite, updateWeather, deleteFavoriteCityHandler } =
@@ -32,7 +33,9 @@ const Favorites: FC = () => {
       {favorites?.map((city) => (
         <div key={city}>
           <div className="remove">
-            <button onClick={() => handleDeleteFavoriteCity(city)}>X</button>
+            <button onClick={() => handleDeleteFavoriteCity(city)}>
+              <TiDeleteOutline />
+            </button>
           </div>
           <div
             className="favorite-content"
