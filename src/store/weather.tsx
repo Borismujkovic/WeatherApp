@@ -19,7 +19,7 @@ export const WeatherContext = createContext<WeatherProps>({
 });
 
 const WeatherProvider = ({ children }: PropsWithChildren) => {
-  const [weatherData, setWeatherData] = useState<Weather | undefined>(undefined);
+  const [weatherData, setWeatherData] = useState<Weather>();
   const [favoriteCity, setFavoriteCity] = useState<string[]>([]);
 
   const updateWeather = async (city: string) => {
