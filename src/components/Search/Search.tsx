@@ -1,31 +1,36 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
-import Autocomplete from "react-autocomplete";
-import { cities } from "../../api/api";
+import React, { useState, useEffect, useContext } from "react";
 import { Container } from "./style";
-import { Cities } from "../../types/types";
 import { WeatherContext } from "../../store/weather";
 import { getUserLocation } from "../../api/service";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 const Search = () => {
   const [search, setSearch] = useState<string>("");
-  const [city, setCity] = useState<string[]>(cities);
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [userLocation, setUserlocation] = useState<string>("");
   const [error, setError] = useState<string>("");
   const { updateWeather } = useContext(WeatherContext);
 
-  const handleSelect = (selectedValue: string) => {
-    setSelectedCity(selectedValue);
-    setSearch("");
-    setUserlocation("");
+  const handleChange = (newAddress: string) => {
+    setSearch(newAddress);
   };
 
-  useEffect(() => {
-    const filteredCities = cities.filter((city: Cities) =>
-      city.toLowerCase().includes(search?.toLowerCase())
-    );
-    setCity(filteredCities);
-  }, [search]);
+  const handleSelection = (selected: string) => {
+    geocodeByAddress(selected)
+      .then((results) => getLatLng(results[0]))
+      .then(async (latLng) => {
+        const currentLocation = await getUserLocation({
+          latitude: latLng.lat,
+          longitude: latLng.lng,
+        });
+        setSelectedCity(currentLocation?.properties?.city);
+        setSearch("");
+      })
+      .catch((error) => console.error("Error", error));
+  };
 
   const handleUserLocation = () => {
     if (!navigator.geolocation) {
@@ -44,14 +49,13 @@ const Search = () => {
       },
       (err) => {
         setError(`Error getting location: ${err.message}`);
-        alert(`Error getting location: ${err.message}`);
       }
     );
   };
 
   useEffect(() => {
-    if(selectedCity || userLocation) {
-      updateWeather(selectedCity || userLocation)
+    if (selectedCity || userLocation) {
+      updateWeather(selectedCity || userLocation);
     }
   }, [userLocation, selectedCity]);
 
@@ -62,41 +66,57 @@ const Search = () => {
   return (
     <Container>
       <div>
-        <Autocomplete
-          inputProps={{
-            placeholder: "Search",
-          }}
+        <PlacesAutocomplete
           value={search}
-          items={search ? city : []}
-          getItemValue={(item: string) => item}
-          renderItem={(item: string, isHighlighted: boolean) => (
-            <div
-              key={item}
-              style={{
-                background: isHighlighted ? "lightgray" : "white",
-                padding: "10px",
-                fontWeight: "700",
-                textDecoration: "none",
-                color: "black",
-                cursor: "pointer",
-                borderBottom: "1px solid #282c34",
-              }}
-            >
-              {item || []}
+          onChange={handleChange}
+          onSelect={handleSelection}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+            <div>
+              <input
+                {...getInputProps({
+                  placeholder: "Enter your address",
+                  className: "location-search-input",
+                })}
+              />
+              <div className="autocomplete-dropdown-container">
+                {loading && <div>Loading...</div>}
+                {suggestions.map((suggestion) => {
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        style: suggestion.active
+                          ? {
+                              backgroundColor: "#c9c9c9",
+                              cursor: "pointer",
+                              border: "1px solid black",
+                              padding: "0.2rem",
+                              fontSize: "1rem",
+                              color: "black",
+                            }
+                          : {
+                              backgroundColor: "#fafafa",
+                              cursor: "pointer",
+                              border: "1px solid black",
+                              padding: "0.2rem",
+                              fontSize: "1rem",
+                              color: "black",
+                            },
+                      })}
+                    >
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            setSearch(event.target.value)
-          }
-          onSelect={handleSelect}
-          menuStyle={{
-            position: "fixed",
-            backgroundColor: "black",
-            zIndex: 9999,
-            maxHeight: "200px",
-            overflow: "auto",
-          }}
-        />
+        </PlacesAutocomplete>
       </div>
       <div onClick={handleUserLocation}>
         <img

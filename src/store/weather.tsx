@@ -3,23 +3,23 @@ import { getCurrentWeather } from "../api/service";
 import { Weather } from "../types/types";
 
 type WeatherProps = {
-  weather: Weather | null;
+  weather: Weather | undefined;
   updateWeather: (city: string) => void;
-  favorite: string[] | null;
+  favorite: string[];
   favoriteCityHandler: (city: string) => void;
   deleteFavoriteCityHandler: (city: string) => void;
 };
 
 export const WeatherContext = createContext<WeatherProps>({
-  weather: null,
+  weather: undefined,
   updateWeather: () => {},
-  favorite: null,
+  favorite: [],
   favoriteCityHandler: () => {},
   deleteFavoriteCityHandler: () => {},
 });
 
 const WeatherProvider = ({ children }: PropsWithChildren) => {
-  const [weatherData, setWeatherData] = useState<Weather | null>(null);
+  const [weatherData, setWeatherData] = useState<Weather>();
   const [favoriteCity, setFavoriteCity] = useState<string[]>([]);
 
   const updateWeather = async (city: string) => {

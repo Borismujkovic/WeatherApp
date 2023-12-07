@@ -13,10 +13,6 @@ const OtherConditions = () => {
   const {weather} = useContext(WeatherContext);
   const currentWeather = weather?.current;
 
-  if (!weather) {
-    return <Loading />;
-  }
-
   return (
     <ConditionsStyle>
       <h3>AIR CONDITIONS</h3>
