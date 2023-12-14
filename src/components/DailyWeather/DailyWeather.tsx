@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { DailyContainer } from "./style";
 import { Weather } from "./DailyWeather.types";
 import { WeatherContext } from "../../store/weather";
+import { ForecastDay } from "../../types/types";
 
 const DailyWeather = () => {
   const { weather } = useContext(WeatherContext);
@@ -9,7 +10,7 @@ const DailyWeather = () => {
   return (
     <DailyContainer>
       <h3>7-DAY FORECAST</h3>
-      {dailyweather?.map((day: any) => (
+      {dailyweather?.map((day: ForecastDay) => (
         <div className="singleDay" key={day.date_epoch}>
           <p>{day.date}</p>
           <div className="weatherType">
