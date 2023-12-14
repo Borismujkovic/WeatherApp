@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { DailyContainer } from "./style";
-import { Weather } from "./DailyWeather.types";
 import { WeatherContext } from "../../store/weather";
 import { ForecastDay } from "../../types/types";
 
