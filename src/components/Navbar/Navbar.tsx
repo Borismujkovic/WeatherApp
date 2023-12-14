@@ -8,7 +8,10 @@ import { Navbar } from "./style";
 const NavBar: FC = () => {
   return (
     <Navbar>
-      <img src="https://freesvg.org/storage/img/thumb/sivvus_weather_symbols_2.png" alt="weatherIcon" />
+      <img
+        src="https://freesvg.org/storage/img/thumb/sivvus_weather_symbols_2.png"
+        alt="weatherIcon"
+      />
       <ul>
         <li>
           <NavLink to="/">
@@ -29,7 +32,7 @@ const NavBar: FC = () => {
           </NavLink>
         </li>
       </ul>
-      </Navbar>
+    </Navbar>
   );
 };
 

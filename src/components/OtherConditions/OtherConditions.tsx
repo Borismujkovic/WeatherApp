@@ -5,12 +5,11 @@ import { MdOutlineVisibility } from "react-icons/md";
 import { WiHumidity } from "react-icons/wi";
 import { LuSunMedium } from "react-icons/lu";
 import { FaThermometerThreeQuarters } from "react-icons/fa";
-import Loading from "../../utils/Loading";
 import { useContext } from "react";
 import { WeatherContext } from "../../store/weather";
 
 const OtherConditions = () => {
-  const {weather} = useContext(WeatherContext);
+  const { weather } = useContext(WeatherContext);
   const currentWeather = weather?.current;
 
   return (
@@ -19,41 +18,41 @@ const OtherConditions = () => {
       <div>
         <Row>
           <Col lg={12} md={6}>
-          <div className="condition">
-          <WiHumidity />
-                <div>
-                  <span>Humidity:</span>
-                  <p>{currentWeather?.humidity}%</p>
-                </div>
+            <div className="condition">
+              <WiHumidity />
+              <div>
+                <span>Humidity:</span>
+                <p>{currentWeather?.humidity}%</p>
               </div>
-              </Col>
-              <Col lg={12} md={6}>
-              <div className="condition">
+            </div>
+          </Col>
+          <Col lg={12} md={6}>
+            <div className="condition">
               <FaThermometerThreeQuarters />
-                <div>
-                  <span>Pressure:</span>
-                  <p>{currentWeather?.pressure_mb} hPa</p>
-                </div>
+              <div>
+                <span>Pressure:</span>
+                <p>{currentWeather?.pressure_mb} hPa</p>
               </div>
-              </Col>
-              <Col lg={12} md={6}>
-              <div className="condition">
+            </div>
+          </Col>
+          <Col lg={12} md={6}>
+            <div className="condition">
               <MdOutlineVisibility />
-                <div>
-                  <span>Visibility:</span>
-                  <p>{currentWeather?.vis_km} km</p>
-                </div>
+              <div>
+                <span>Visibility:</span>
+                <p>{currentWeather?.vis_km} km</p>
               </div>
-              </Col>
-              <Col lg={12} md={6}>
-              <div className="condition">
+            </div>
+          </Col>
+          <Col lg={12} md={6}>
+            <div className="condition">
               <LuSunMedium />
-                <div>
-                  <span>UV:</span>
-                  <p>{currentWeather?.uv}</p>
-                </div>
+              <div>
+                <span>UV:</span>
+                <p>{currentWeather?.uv}</p>
               </div>
-              </Col>
+            </div>
+          </Col>
         </Row>
       </div>
     </ConditionsStyle>
