@@ -24,9 +24,9 @@ export const FavoritesContainer = styled.div`
       margin: 0.3rem 0;
     }
     button:hover {
-        background-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.secondary};
     }
-    svg{
+    svg {
       width: 20px;
       height: 20px;
     }
@@ -43,6 +43,6 @@ export const FavoritesContainer = styled.div`
     font-size: 1.5rem;
   }
   .favorite-content:hover {
-    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.75);
   }
 `;

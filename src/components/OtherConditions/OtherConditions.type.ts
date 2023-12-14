@@ -1,5 +1,5 @@
 export type Conditions = {
-    title: string;
-    icon: string;
-    weather: string;
-  };
+  title: string;
+  icon: string;
+  weather: string;
+};

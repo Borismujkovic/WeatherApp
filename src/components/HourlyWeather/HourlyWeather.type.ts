@@ -1,5 +1,5 @@
 export type Weather = {
-    time: string;
-    icon: string;
-    weather: string;
-  };
+  time: string;
+  icon: string;
+  weather: string;
+};

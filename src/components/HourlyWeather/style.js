@@ -19,24 +19,5 @@ export const HourlyContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    .hourly {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-left: 1px solid ${theme.colors.white};
-      border-right: 1px solid ${theme.colors.white};
-
-      img {
-        height: 70px;
-        width: 70px;
-      }
-
-      p {
-        font-size: 1.7rem;
-        color: ${theme.colors.white};
-      }
-    }
   }
 `;
